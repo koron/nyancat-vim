@@ -1,0 +1,5 @@
+# nyancat.vim - nyancat on vim
+
+:source nyancat.vim
+
+Enjoy it!
