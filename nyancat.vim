@@ -9,21 +9,22 @@ let s:COLUMNS = 80
 let s:ROWS = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
 let s:BLOCKS = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
 let s:COLORS = [
-      \ '#000000',
-      \ '#800000',
-      \ '#008000',
-      \ '#808000',
-      \ '#000080',
-      \ '#800080',
-      \ '#008080',
-      \ '#808080',
-      \ '#ff0000',
-      \ '#00ff00',
-      \ '#ffff00',
-      \ '#0000ff',
-      \ '#ff00ff',
-      \ '#00ffff',
-      \ '#ffffff'
+      \ [ '#000000',  0 ],
+      \ [ '#000080',  1 ],
+      \ [ '#008000',  2 ],
+      \ [ '#008080',  3 ],
+      \ [ '#800000',  4 ],
+      \ [ '#800080',  5 ],
+      \ [ '#808000',  6 ],
+      \ [ '#C0C0C0',  7 ],
+      \ [ '#808080',  8 ],
+      \ [ '#0000ff',  9 ],
+      \ [ '#00ff00', 10 ],
+      \ [ '#00ffff', 11 ],
+      \ [ '#ff0000', 12 ],
+      \ [ '#ff00ff', 13 ],
+      \ [ '#ffff00', 14 ],
+      \ [ '#ffffff', 15 ]
       \]
 
 function! s:Game()
@@ -76,16 +77,18 @@ function! s:ColorInit()
   let idx = 0
   while idx < len(s:BLOCKS)
     if idx < len(s:COLORS)
-      let color = s:COLORS[idx]
+      let gcolor = s:COLORS[idx][0]
+      let ccolor = s:COLORS[idx][1]
     else
-      let color = s:COLORS[0]
+      let gcolor = s:COLORS[0][0]
+      let ccolor = s:COLORS[0][1]
     endif
-    call s:ColorSet(idx, color)
+    call s:ColorSet(idx, gcolor, ccolor)
     let idx = idx + 1
   endwhile
 endfunction
 
-function! s:ColorSet(idx, color)
+function! s:ColorSet(idx, gcolor, ccolor)
   if type(a:idx) == 0
     let idx2 = a:idx
   else
@@ -99,8 +102,10 @@ function! s:ColorSet(idx, color)
   let name = 'gameBlock'.idx2
   let target = escape(target, '/\\*^$.~[]')
   execute 'syntax match '.name.' /'.target.'/'
-  execute 'highlight '.name." guifg='".a:color."'"
-  execute 'highlight '.name." guibg='".a:color."'"
+  execute 'highlight '.name." guifg='".a:gcolor."'"
+  execute 'highlight '.name." guibg='".a:gcolor."'"
+  execute 'highlight '.name." ctermfg='".a:ccolor."'"
+  execute 'highlight '.name." ctermbg='".a:ccolor."'"
 endfunction
 
 "===========================================================================
@@ -389,20 +394,20 @@ let s:patterns = [
 function! s:GDocInit(doc)
   let a:doc.title = 'nyancat'
   let a:doc.count = 0
-  call s:ColorSet(',', '#000080')
-  call s:ColorSet('.', '#ffffff')
-  call s:ColorSet("'", '#000000')
-  call s:ColorSet('@', '#fecc97')
-  call s:ColorSet('$', '#ff99ff')
-  call s:ColorSet('-', '#f9349e')
-  call s:ColorSet('>', '#ff0000')
-  call s:ColorSet('&', '#ff9000')
-  call s:ColorSet('+', '#ffff00')
-  call s:ColorSet('#', '#33ff00')
-  call s:ColorSet('=', '#0090ff')
-  call s:ColorSet(';', '#6535fd')
-  call s:ColorSet('*', '#989898')
-  call s:ColorSet('%', '#ff9898')
+  call s:ColorSet(',', '#000080', 1)
+  call s:ColorSet('.', '#ffffff', 15)
+  call s:ColorSet("'", '#000000', 0)
+  call s:ColorSet('@', '#fecc97', 14)
+  call s:ColorSet('$', '#ff99ff', 13)
+  call s:ColorSet('-', '#f9349e', 12)
+  call s:ColorSet('>', '#ff0000', 12)
+  call s:ColorSet('&', '#ff9000', 14)
+  call s:ColorSet('+', '#ffff00', 10)
+  call s:ColorSet('#', '#33ff00', 11)
+  call s:ColorSet('=', '#0090ff', 9)
+  call s:ColorSet(';', '#6535fd', 13)
+  call s:ColorSet('*', '#989898', 8)
+  call s:ColorSet('%', '#ff9898', 13)
 endfunction
 
 function! s:GDocUpdate(doc, ev)
