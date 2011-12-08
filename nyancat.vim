@@ -25,6 +25,31 @@ let s:COLORS = [
       \ '#00ffff',
       \ '#ffffff'
       \]
+let s:TERM_COLORS = {
+      \ '#0090ff': 9,
+      \ '#6535fd': 13,
+      \ '#989898': 7,
+      \ '#f9349e': 12,
+      \ '#fecc97': 6,
+      \ '#ff9000': 4,
+      \ '#ff9898': 5,
+      \ '#ff99ff': 11,
+      \ '#000000': 0,
+      \ '#800000': 4,
+      \ '#008000': 2,
+      \ '#808000': 6,
+      \ '#000080': 1,
+      \ '#800080': 5,
+      \ '#008080': 3,
+      \ '#808080': 8,
+      \ '#ff0000': 12,
+      \ '#00ff00': 10,
+      \ '#ffff00': 14,
+      \ '#0000ff': 9,
+      \ '#ff00ff': 13,
+      \ '#00ffff': 11,
+      \ '#ffffff': 15
+      \}
 
 function! s:Game()
   let doc = s:GameOpen()
@@ -99,8 +124,12 @@ function! s:ColorSet(idx, color)
   let name = 'gameBlock'.idx2
   let target = escape(target, '/\\*^$.~[]')
   execute 'syntax match '.name.' /'.target.'/'
-  execute 'highlight '.name." guifg='".a:color."'"
-  execute 'highlight '.name." guibg='".a:color."'"
+  if has_key(s:TERM_COLORS, a:color)
+    let ccolor = s:TERM_COLORS[a:color]
+  else
+    let ccolor = 0
+  endif
+  execute printf("highlight %s ctermfg=%s ctermbg=%s guifg=%s guibg=%s", name, ccolor, ccolor, a:color, a:color)
 endfunction
 
 "===========================================================================
