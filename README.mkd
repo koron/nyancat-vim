@@ -2,4 +2,10 @@
 
 :source nyancat.vim
 
+ or
+
+:source nyancat2.vim  (New animation!)
+
 Enjoy it!
+
+To terminate animation, type ESC key.
