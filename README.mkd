@@ -12,4 +12,9 @@ To terminate animation, type ESC key.
 
 # CONTRIBUTERS
 
-  * Göran Gustafsson
+  * mattn <https://github.com/mattn/>
+  * Göran Gustafsson <https://github.com/ggustafsson>
+
+# MAIN AUTHOR
+
+  * Taro MURAOKA <https://github.com/koron/>
