@@ -9,3 +9,7 @@
 Enjoy it!
 
 To terminate animation, type ESC key.
+
+# CONTRIBUTERS
+
+  * Göran Gustafsson

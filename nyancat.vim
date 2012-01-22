@@ -41,6 +41,7 @@ function! s:GameOpen()
   let s:laststatus_value = &laststatus
   let s:cmdheight_value = &cmdheight
   let s:undolevels_value = &undolevels
+  let s:list_value = &list
   enew
   set lazyredraw
   setlocal buftype=nofile noswapfile
@@ -48,6 +49,7 @@ function! s:GameOpen()
     set laststatus=0 cmdheight=1
   endif
   set undolevels=-1
+  setlocal nolist
   " Initialize screen buffer
   let doc = {}
   let doc.screenBuffer = []
@@ -81,6 +83,7 @@ function! s:GameClose(doc)
   let &laststatus = s:laststatus_value
   let &cmdheight = s:cmdheight_value
   let &undolevels = s:undolevels_value
+  let &list = s:list_value
   return get(a:doc, 'title', 'GAME END')
 endfunction
 
