@@ -34,10 +34,22 @@ function! s:Game()
 endfunction
 
 function! s:GameOpen()
+  if !exists("g:nyancat_display_statusline")
+    let g:nyancat_display_statusline = 0
+  endif
+  let s:lazyredraw_value = &lazyredraw
+  let s:laststatus_value = &laststatus
+  let s:cmdheight_value = &cmdheight
+  let s:undolevels_value = &undolevels
+  let s:list_value = &list
+  enew
   set lazyredraw
   setlocal buftype=nofile noswapfile
-  set laststatus=0 cmdheight=1
+  if g:nyancat_display_statusline == 0
+    set laststatus=0 cmdheight=1
+  endif
   set undolevels=-1
+  setlocal nolist
   " Initialize screen buffer
   let doc = {}
   let doc.screenBuffer = []
@@ -67,7 +79,11 @@ endfunction
 
 function! s:GameClose(doc)
   call s:GDocFinal(a:doc)
-  set nolazyredraw
+  let &lazyredraw = s:lazyredraw_value
+  let &laststatus = s:laststatus_value
+  let &cmdheight = s:cmdheight_value
+  let &undolevels = s:undolevels_value
+  let &list = s:list_value
   return get(a:doc, 'title', 'GAME END')
 endfunction
 
