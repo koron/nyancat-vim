@@ -1,5 +1,5 @@
 "
-" nyancat.vim - 
+" nyancat.vim -
 "
 " Author: MURAOKA Taro <koron.kaoriya@gmail.com>
 
@@ -319,6 +319,6 @@ endfunction
 "===========================================================================
 " Start the game.
 
-call s:Game()
+command! Nyancat2 call s:Game()
 
 " vim:set ts=8 sts=2 sw=2 tw=0 et:
