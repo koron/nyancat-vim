@@ -1,5 +1,5 @@
 "
-" nyancat.vim -
+" autoload/nyancat2.vim - Show Nyancat #2 animation.
 "
 " Author: MURAOKA Taro <koron.kaoriya@gmail.com>
 
@@ -319,6 +319,8 @@ endfunction
 "===========================================================================
 " Start the game.
 
-command! Nyancat2 call s:Game()
+function! nyancat2#start()
+  call s:Game()
+endfunction
 
 " vim:set ts=8 sts=2 sw=2 tw=0 et:
