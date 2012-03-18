@@ -1,10 +1,14 @@
 # nyancat.vim - nyancat on vim
 
-:source nyancat.vim
+You can install the plugin using [pathogen](http://www.vim.org/scripts/script.php?script_id=2332). Or, you could just copy the "plugin" directory under `~/.vim`.
+
+To use, execute:
+
+:Nyancat
 
  or
 
-:source nyancat2.vim  (New animation!)
+:Nyancat2  (New animation!)
 
 Enjoy it!
 
