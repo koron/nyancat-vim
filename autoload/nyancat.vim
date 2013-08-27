@@ -44,6 +44,7 @@ function! s:GameOpen()
   let s:list_value = &list
   enew
   set lazyredraw
+  setlocal nofoldenable
   setlocal buftype=nofile noswapfile
   if g:nyancat_display_statusline == 0
     set laststatus=0 cmdheight=1
