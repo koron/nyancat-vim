@@ -19,23 +19,23 @@ your `~/.vim`.
 
 Or, you can use one of vim package managers, like pathogen or so.
 
-- [pathogen](http://www.vim.org/scripts/script.php?script_id=2332)
-- [Vundle](https://github.com/gmarik/vundle)
+*   [pathogen](http://www.vim.org/scripts/script.php?script_id=2332)
+*   [Vundle](https://github.com/gmarik/vundle)
 
 After installation, you can start animation with below commands.
 
-:Nyancat
-:Nyancat2
+    :Nyancat
+    :Nyancat2
 
 
 # Contributers
 
-- mattn <https://github.com/mattn/>
-- Göran Gustafsson <https://github.com/ggustafsson>
-- Andrew Radev <https://github.com/AndrewRadev>
+*   mattn <https://github.com/mattn/>
+*   Göran Gustafsson <https://github.com/ggustafsson>
+*   Andrew Radev <https://github.com/AndrewRadev>
+*   Matthias Günther <https://github.com/wikimatze>
 
 
-# Main Author
+## Main Author
 
-- Taro MURAOKA <https://github.com/koron/>
-
+*   MURAOKA Taro <https://github.com/koron/>
