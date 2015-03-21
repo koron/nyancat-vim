@@ -37,12 +37,14 @@ function! s:GameOpen()
   if !exists("g:nyancat_display_statusline")
     let g:nyancat_display_statusline = 0
   endif
+  let s:number_value = &number
   let s:lazyredraw_value = &lazyredraw
   let s:laststatus_value = &laststatus
   let s:cmdheight_value = &cmdheight
   let s:undolevels_value = &undolevels
   let s:list_value = &list
   enew
+  set nonumber
   set lazyredraw
   setlocal nofoldenable
   setlocal buftype=nofile noswapfile
@@ -80,6 +82,7 @@ endfunction
 
 function! s:GameClose(doc)
   call s:GDocFinal(a:doc)
+  let &number = s:number_value
   let &lazyredraw = s:lazyredraw_value
   let &laststatus = s:laststatus_value
   let &cmdheight = s:cmdheight_value
